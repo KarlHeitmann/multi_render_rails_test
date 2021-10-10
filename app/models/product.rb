@@ -10,4 +10,6 @@
 #  updated_at  :datetime         not null
 #
 class Product < ApplicationRecord
+  has_many :product_colors
+  has_many :colors, through: :procuct_colors
 end

@@ -4,5 +4,17 @@
 # por último, este archivo carga las seeds.rb. Como `rails db:reset` hace el drop de la DB, no es necesario
 # eliminar los datos de las tablas al principio del seeds.rb
 
-detonador_acme =  Product.create(nombre: "Detonador ACME", descripcion: "Detonador para poder capturar al Correcaminos", image_url: "detonador_acme.jpg")
+color_azul = Color.create!(nombre: "Azul")
+color_roja = Color.create!(nombre: "Roja")
+color_amarilla = Color.create!(nombre: "Amarilla")
+
+detonador_acme =  Product.create!(nombre: "Detonador ACME", descripcion: "Detonador para poder capturar al Correcaminos", image_url: "detonador_acme.jpg")
+
+polera = Product.create!(nombre: "Polera", descripcion: "Linda polera para pasar el verano")
+
+
+ProductColor.create(color: color_azul,     product: polera, extra: "Variante azul de la polera",     image_url: "polera_azul.jpg")
+ProductColor.create(color: color_roja,     product: polera, extra: "Variante roja de la polera",     image_url: "polera_roja.jpg")
+ProductColor.create(color: color_amarilla, product: polera, extra: "Variante amarilla de la polera", image_url: "polera_amarilla.jpg")
+
 
