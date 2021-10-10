@@ -1,14 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @product.nombre %></h1>
-<p>
-  <strong>Descripcion:</strong>
-  <%= @product.descripcion %>
-</p>
+<div class="row">
+  <div class="col-6">
+    <h1><%= @product.nombre %></h1>
+    <p>
+      <strong>Descripcion:</strong>
+      <%= @product.descripcion %>
+    </p>
+    <p>
+      <%= image_tag @product.image_url unless @product.image_url.nil? %>
+    </p>
+  </div>
+  <div class="col-6">
+    <% @product.product_colors.each do |product_color| %>
+      <div>
+        <h2><%= product_color.extra %></h2>
+        <%= image_tag product_color.image_url %>
+      </div>
+    <% end %>
+  </div>
+</div>
 
-<p>
-  <%= image_tag @product.image_url unless @product.image_url.nil? %>
-</p>
 
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
