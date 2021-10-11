@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
-
+<ul>
+  <li><%= link_to 'show_new_gema', product_new_gem_path(@product) %></li>
+  <li><%= link_to 'show', @product %></li>
+</ul>
 <div class="row">
   <div class="col-6">
     <h1><%= @product.nombre %></h1>
@@ -12,7 +15,11 @@
     </p>
   </div>
   <div class="col-6">
-    <%= render partial: 'product_colors/product_color_carousel', locals: {product_colors: @product.product_colors} %>
+    <% if @product.product_colors.any? %>
+      <%= render partial: 'product_colors/product_color_carousel', locals: {product_colors: @product.product_colors} %>
+    <% else %>
+      <h1>Este producto no tiene variantes en colores</h1>
+    <% end %>
   </div>
 </div>
 
