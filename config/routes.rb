@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :products
   get 'static_pages/index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get 'products/:id/show_new', to: 'products#show_new', as: :product_new
 
   root to: 'static_pages#index'
 end

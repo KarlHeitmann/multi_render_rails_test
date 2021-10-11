@@ -14,10 +14,6 @@
   <div class="col-6">
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
-        <!--
-        <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        -->
         <% @product.product_colors.each_with_index do |product_color, i| %>
           <% if i == 0 %>
             <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="0" class="active" aria-current="true" aria-label="<%= product_color.extra %>"></button>
