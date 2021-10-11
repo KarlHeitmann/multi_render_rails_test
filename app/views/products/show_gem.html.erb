@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <ul>
-  <li><%= link_to 'show_new', product_new_path(@product) %></li>
+  <li><%= link_to 'show partial', product_partial_path(@product) %></li>
   <li><%= link_to 'show', @product %></li>
 </ul>
 
@@ -16,7 +16,7 @@
     </p>
   </div>
   <div class="col-6">
-    <%= @multi_render.render_partial(:product_colors, method(:render)) %>
+    <%= @multi_render.render_partial(:product_colors, method(:render)) %> <%# HACK: Esta linea debe hacer lo que se ve en show_partial. Si el arreglo esta vacio, debe poner un mensaje proporcionado por el usuario  %>
   </div>
 </div>
 
