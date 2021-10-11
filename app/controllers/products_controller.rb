@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[ show show_new edit update destroy ]
+  before_action :set_product, only: %i[ show show_new show_new_gema edit update destroy ]
 
   # GET /products or /products.json
   def index
@@ -7,10 +7,15 @@ class ProductsController < ApplicationController
   end
 
   # GET /products/1 or /products/1.json
+  def show
+  end
+
   def show_new
   end
 
-  def show
+  def show_new_gema
+    @multi_render = MR.new
+    @multi_render.add(:product_colors, 'product_colors/product_color_carousel', {product_colors: @product.product_colors})
   end
 
   # GET /products/new
