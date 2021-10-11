@@ -1,0 +1,15 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <%= link_to "Inicio", root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to 'Productos', products_path, class: "nav-link #{params[:controller] == "products" ? "active": ""}" %> <%# HACK Ojo como acá se usa el operador ternario para asignarle la clase "active" al link_to, para que quede en negrita el item del navbar si es el controlador que corresponde %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

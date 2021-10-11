@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  resources :products
   get 'static_pages/index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get 'products/:id/show_partial', to: 'products#show_partial', as: :product_partial
+  get 'products/:id/show_gem', to: 'products#show_gem', as: :product_gem
 
   root to: 'static_pages#index'
 end

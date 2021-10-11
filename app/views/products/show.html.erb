@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+<ul>
+  <li><%= link_to 'REPARAR LO QUE SE VE ACA: show gema multi render', product_gem_path(@product) %></li>
+  <li><%= link_to 'show parciales', product_partial_path(@product) %></li>
+<ul>
+
+<div class="row">
+  <div class="col-6">
+    <h1><%= @product.nombre %></h1>
+    <p>
+      <strong>Descripcion:</strong>
+      <%= @product.descripcion %>
+    </p>
+    <p>
+      <%= image_tag @product.image_url unless @product.image_url.nil? %>
+    </p>
+  </div>
+  <div class="col-6">
+    <% if @product.product_colors.any? %>
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <% @product.product_colors.each_with_index do |product_color, i| %>
+            <% if i == 0 %>
+              <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="0" class="active" aria-current="true" aria-label="<%= product_color.extra %>"></button>
+            <% else %>
+              <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="<%= i %>" aria-label="<%= product_color.extra %>"></button>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="carousel-inner">
+          <% @product.product_colors.each_with_index do |product_color, i| %>
+            <div class="carousel-item <%= i == 0 ? "active" : "" %>">
+              <%= image_tag product_color.image_url, class: "d-block w-100", alt: product_color.extra %>
+              <div class="carousel-caption d-none d-md-block">
+                <h5><%= product_color.extra %></h5>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    <% else %>
+      <h1>Este producto no tiene variantes en colores</h1>
+    <% end %>
+  </div>
+</div>
+
+
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
